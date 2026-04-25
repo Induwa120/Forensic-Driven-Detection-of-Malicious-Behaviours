@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - ML-Driven Forensic Malicious Behavior Detection System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .topnav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #111;
+            overflow: hidden;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .topnav a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background-color 0.3s;
+        }
+
+        .topnav a:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .topnav a.active {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 450px;
+            margin-top: 60px;
+        }
+
+        .auth-header {
+            background: linear-gradient(135deg, #007BFF, #6f42c1);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .auth-header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .auth-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .input-with-icon input, .input-with-icon select {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .input-with-icon input:focus, .input-with-icon select:focus {
+            outline: none;
+            border-color: #007BFF;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .name-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #007BFF, #6f42c1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-google {
+            background: white;
+            color: #333;
+            border: 2px solid #e1e5e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-google:hover {
+            border-color: #007BFF;
+            transform: translateY(-2px);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .auth-footer a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .terms-agreement {
+            margin: 20px 0;
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .terms-agreement a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .terms-agreement a:hover {
+            text-decoration: underline;
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            font-size: 0.8em;
+        }
+
+        .strength-bar {
+            height: 4px;
+            background: #e1e5e9;
+            border-radius: 2px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .strength-weak { background: #dc3545; width: 25%; }
+        .strength-fair { background: #fd7e14; width: 50%; }
+        .strength-good { background: #ffc107; width: 75%; }
+        .strength-strong { background: #28a745; width: 100%; }
+
+        .system-features {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+
+        .system-features h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .system-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .system-features li {
+            padding: 5px 0;
+            font-size: 0.85em;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .system-features li i {
+            color: #007BFF;
+            font-size: 0.8em;
+        }
+
+        .alert {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @media (max-width: 480px) {
+            .auth-container {
+                margin: 20px;
+                margin-top: 80px;
+            }
+
+            .auth-body {
+                padding: 20px;
+            }
+
+            .name-fields {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .system-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navigation Bar -->
+<div class="topnav">
+    <!-- Always show Home and About -->
+    <a href="{{ url_for('home') }}"><i class="fas fa-brain"></i> Dashboard</a>
+    <a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a>
+
+    {% if session.user_id %}
+        <!-- Show protected routes only when logged in -->
+        <a href="{{ url_for('network') }}"><i class="fas fa-network-wired"></i> Network Traffic Analysis</a>
+        <a href="{{ url_for('file') }}"><i class="fas fa-file"></i> File Access Patterns</a>
+        <a href="{{ url_for('restricted') }}"><i class="fas fa-ban"></i> Restricted Site Access</a>
+        <a href="{{ url_for('api_analyzer') }}"><i class="fas fa-plug"></i> API Behavior Analysis</a>
+        <div class="nav-user">
+            <span class="username">Welcome, {{ username }}</span>
+            <a href="{{ url_for('signin') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    {% else %}
+        <!-- Show auth links when not logged in -->
+        <a class="active" href="{{ url_for('signin') }}"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+        <a href="{{ url_for('signup') }}"><i class="fas fa-user-plus"></i> Sign Up</a>
+    {% endif %}
+</div>
+
+<!-- Sign Up Container -->
+<div class="auth-container">
+    <div class="auth-header">
+        <h1>Create Account</h1>
+        <p>Join our security monitoring platform</p>
+        <div class="system-badge">ML-Driven Forensic Detection System</div>
+    </div>
+
+    <div class="auth-body">
+        <!-- Success Alert -->
+        <div class="alert alert-success" id="successAlert">
+            <i class="fas fa-check-circle"></i> Account created successfully! Redirecting...
+        </div>
+
+        <!-- Error Alert -->
+        <div class="alert alert-error" id="errorAlert">
+            <i class="fas fa-exclamation-triangle"></i> Please fill all required fields correctly.
+        </div>
+
+        <form id="signupForm">
+            <div class="name-fields">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="organization">Organization</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-building"></i>
+                    <input type="text" id="organization" name="organization" placeholder="Company name">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Primary Role</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-briefcase"></i>
+                    <select id="role" name="role">
+                        <option value="">Select your role</option>
+                        <option value="security_analyst">Security Analyst</option>
+                        <option value="system_admin">System Administrator</option>
+                        <option value="it_manager">IT Manager</option>
+                        <option value="security_engineer">Security Engineer</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Create password" required oninput="checkPasswordStrength(this.value)">
+                    <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="password-strength">
+                    <div id="passwordText">Password strength</div>
+                    <div class="strength-bar">
+                        <div class="strength-fill" id="passwordStrength"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required oninput="checkPasswordMatch()">
+                    <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div id="passwordMatch" style="font-size: 0.8em; margin-top: 5px;"></div>
+            </div>
+
+            <div class="terms-agreement">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-user-plus"></i> Create Account
+            </button>
+
+            <button type="button" class="btn btn-google">
+                <i class="fab fa-google"></i> Sign up with Google
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            Already have an account? <a href="/signin">Sign in here</a>
+        </div>
+
+        <div class="system-features">
+            <h4><i class="fas fa-star"></i> What You Get</h4>
+            <ul>
+                <li><i class="fas fa-check"></i> Real-time threat monitoring dashboard</li>
+                <li><i class="fas fa-check"></i> Advanced ML-driven anomaly detection</li>
+                <li><i class="fas fa-check"></i> Comprehensive forensic reporting</li>
+                <li><i class="fas fa-check"></i> 24/7 security alerts and notifications</li>
+                <li><i class="fas fa-check"></i> Multi-user collaboration features</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    // Password visibility toggle
+    function togglePassword(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const toggleIcon = passwordField.nextElementSibling.querySelector('i');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleIcon.className = 'fas fa-eye-slash';
+        } else {
+            passwordField.type = 'password';
+            toggleIcon.className = 'fas fa-eye';
+        }
+    }
+
+    // Password strength checker
+    function checkPasswordStrength(password) {
+        const strengthBar = document.getElementById('passwordStrength');
+        const strengthText = document.getElementById('passwordText');
+
+        let strength = 0;
+        let text = 'Password strength';
+
+        if (password.length >= 8) strength++;
+        if (password.match(/[a-z]/) && password.match(/[A-Z]/)) strength++;
+        if (password.match(/\d/)) strength++;
+        if (password.match(/[^a-zA-Z\d]/)) strength++;
+
+        strengthBar.className = 'strength-fill';
+
+        switch(strength) {
+            case 0:
+            case 1:
+                strengthBar.classList.add('strength-weak');
+                text = 'Weak password';
+                break;
+            case 2:
+                strengthBar.classList.add('strength-fair');
+                text = 'Fair password';
+                break;
+            case 3:
+                strengthBar.classList.add('strength-good');
+                text = 'Good password';
+                break;
+            case 4:
+                strengthBar.classList.add('strength-strong');
+                text = 'Strong password';
+                break;
+        }
+
+        strengthText.textContent = text;
+    }
+
+    // Password match checker
+    function checkPasswordMatch() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const matchText = document.getElementById('passwordMatch');
+
+        if (confirmPassword === '') {
+            matchText.textContent = '';
+            matchText.style.color = '';
+        } else if (password === confirmPassword) {
+            matchText.textContent = '✓ Passwords match';
+            matchText.style.color = '#28a745';
+        } else {
+            matchText.textContent = '✗ Passwords do not match';
+            matchText.style.color = '#dc3545';
+        }
+    }
+
+    // Form submission handling
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const terms = document.getElementById('terms').checked;
+        const successAlert = document.getElementById('successAlert');
+        const errorAlert = document.getElementById('errorAlert');
+
+        // Basic validation
+        if (password !== confirmPassword) {
+            errorAlert.textContent = 'Passwords do not match. Please check and try again.';
+            errorAlert.style.display = 'block';
+            successAlert.style.display = 'none';
+            return;
+        }
+
+        if (!terms) {
+            errorAlert.textContent = 'Please agree to the Terms of Service and Privacy Policy.';
+            errorAlert.style.display = 'block';
+            successAlert.style.display = 'none';
+            return;
+        }
+
+        if (password.length < 8) {
+            errorAlert.textContent = 'Password must be at least 8 characters long.';
+            errorAlert.style.display = 'block';
+            successAlert.style.display = 'none';
+            return;
+        }
+
+        // Show success
+        successAlert.style.display = 'block';
+        errorAlert.style.display = 'none';
+
+        // Add loading state to button
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating Account...';
+        submitBtn.disabled = true;
+
+        // Simulate API call and redirect
+        setTimeout(() => {
+            // Redirect to dashboard (simulated)
+            window.location.href = '/';
+        }, 2000);
+    });
+
+    // Google Sign Up handler
+    document.querySelector('.btn-google').addEventListener('click', function() {
+        // Simulate Google sign up
+        const btn = this;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            alert('Google Sign Up would be implemented here with OAuth2');
+        }, 1500);
+    });
+</script>
+</body>
+</html>

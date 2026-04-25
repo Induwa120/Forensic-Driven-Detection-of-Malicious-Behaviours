@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ML-Driven Forensic Malicious Behavior Detection System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        /* Top Navigation Bar - Centered */
+        .topnav {
+            background-color: #111;
+            overflow: hidden;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+        }
+
+        .topnav a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background-color 0.3s;
+        }
+
+        .topnav a:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .topnav a.active {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        /* Main content styling */
+        .main {
+            padding: 20px;
+        }
+
+        /* Style for grid layout and tiles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tile {
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 180px;
+            transition: transform 0.3s ease;
+        }
+
+        .tile:hover {
+            transform: translateY(-5px);
+        }
+
+        .tile.green {
+            background-color: #4CAF50;
+        }
+
+        .tile.red {
+            background-color: #FF5733;
+        }
+
+        .tile.blue {
+            background-color: #007BFF;
+        }
+
+        .tile.purple {
+            background-color: #6f42c1;
+        }
+
+        .tile.orange {
+            background-color: #fd7e14;
+        }
+
+        .tile.teal {
+            background-color: #20c997;
+        }
+
+        .tile i {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .tile h2 {
+            font-size: 1.5em;
+            margin: 0;
+        }
+
+        .tile p {
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        /* 3D Art Effect */
+        .tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0.1) 100%);
+            z-index: 1;
+        }
+
+        .tile-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px 10px;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive design for small screens */
+        @media screen and (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .topnav {
+                flex-direction: column;
+            }
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #007BFF, #6f42c1);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .dashboard-header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #333;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .section h3 {
+            color: #6f42c1;
+            margin-top: 20px;
+        }
+
+        .section p, .section li {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .section ul {
+            padding-left: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #007BFF;
+        }
+
+        .stat-card h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .stat-card p {
+            font-size: 2em;
+            font-weight: bold;
+            color: #007BFF;
+            margin: 10px 0;
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid #007BFF;
+        }
+
+        .team-member h3 {
+            margin: 10px 0 5px 0;
+            color: #333;
+        }
+
+        .team-member .role {
+            color: #6f42c1;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tech-item {
+            background: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #007BFF;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #6f42c1;
+            border: 4px solid #007BFF;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .contact-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #007BFF;
+        }
+
+        .contact-card i {
+            font-size: 2em;
+            color: #007BFF;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navigation Bar - Centered -->
+<div class="topnav">
+    <a class="active" href="/"><i class="fas fa-brain"></i> Dashboard</a>
+    <a href="/network"><i class="fas fa-network-wired"></i> Network Traffic Analysis</a>
+    <a href="/restricted"><i class="fas fa-shield-alt"></i> Restricted Site Access</a>
+    <a href="/file"><i class="fas fa-shield-alt"></i> File Access Patterns</a>
+    <a href="/api_analyzer"><i class="fas fa-plug"></i> API Behavior Analysis</a>
+    <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+    <a href="/signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+    <a href="/signup"><i class="fas fa-user-plus"></i> Sign Up</a>
+</div>
+
+<!-- Main content -->
+<div class="main">
+    <div class="container">
+        <!-- About Header -->
+        <div class="dashboard-header">
+            <h1>About Our System</h1>
+            <p>Learn about the ML-Driven Forensic Malicious Behavior Detection System</p>
+        </div>
+
+        <!-- System Overview -->
+        <div class="section">
+            <h2>System Overview</h2>
+            <p>
+                The <strong>ML-Driven Forensic Malicious Behavior Detection System</strong> represents a groundbreaking approach to cybersecurity that combines cutting-edge machine learning techniques with traditional forensic analysis methods. Our system is designed to detect, analyze, and respond to sophisticated cyber threats in real-time while providing comprehensive forensic capabilities for post-incident investigation.
+            </p>
+            <p>
+                Unlike traditional security systems that rely on signature-based detection, our solution employs advanced behavioral analysis and anomaly detection to identify previously unknown threats and sophisticated attack patterns that often evade conventional security measures.
+            </p>
+        </div>
+
+        <!-- Mission & Vision -->
+        <div class="section">
+            <h2>Our Mission & Vision</h2>
+            <div class="grid-container">
+                <div class="tile blue">
+                    <div class="tile-content">
+                        <i class="fas fa-bullseye"></i>
+                        <h2>Our Mission</h2>
+                        <p>To revolutionize cybersecurity through intelligent, ML-driven threat detection that anticipates and neutralizes advanced cyber threats before they can cause harm.</p>
+                    </div>
+                </div>
+                <div class="tile purple">
+                    <div class="tile-content">
+                        <i class="fas fa-eye"></i>
+                        <h2>Our Vision</h2>
+                        <p>To create a world where organizations can operate securely in digital environments, protected by intelligent systems that learn and adapt to evolving threats.</p>
+                    </div>
+                </div>
+                <div class="tile green">
+                    <div class="tile-content">
+                        <i class="fas fa-handshake"></i>
+                        <h2>Our Values</h2>
+                        <p>Innovation, Security, Transparency, and Excellence in protecting digital assets and privacy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technology Stack -->
+        <div class="section">
+            <h2>Technology Stack</h2>
+            <p>Our system is built on a robust and modern technology stack that enables real-time processing, machine learning inference, and scalable deployment:</p>
+
+            <div class="tech-stack">
+                <div class="tech-item">Python 3.8+</div>
+                <div class="tech-item">Flask Framework</div>
+                <div class="tech-item">Scikit-Learn</div>
+                <div class="tech-item">TensorFlow/Keras</div>
+                <div class="tech-item">PyTorch</div>
+                <div class="tech-item">XGBoost</div>
+                <div class="tech-item">MongoDB</div>
+                <div class="tech-item">Socket.IO</div>
+                <div class="tech-item">Scapy</div>
+                <div class="tech-item">Pandas & NumPy</div>
+                <div class="tech-item">JavaScript/HTML5/CSS3</div>
+                <div class="tech-item">Chart.js</div>
+            </div>
+        </div>
+
+        <!-- Key Features Detailed -->
+        <div class="section">
+            <h2>Core Capabilities</h2>
+            <div class="grid-container">
+                <div class="tile orange">
+                    <div class="tile-content">
+                        <i class="fas fa-network-wired"></i>
+                        <h2>Network Anomaly Detection</h2>
+                        <p>Advanced GAN-based models trained on CIC-IDS2017 dataset to detect sophisticated network attacks and anomalies.</p>
+                    </div>
+                </div>
+                <div class="tile teal">
+                    <div class="tile-content">
+                        <i class="fas fa-shield-alt"></i>
+                        <h2>Behavioral Analysis</h2>
+                        <p>Machine learning models that analyze user behavior patterns to detect insider threats and compromised accounts.</p>
+                    </div>
+                </div>
+                <div class="tile red">
+                    <div class="tile-content">
+                        <i class="fas fa-file-contract"></i>
+                        <h2>File Access Monitoring</h2>
+                        <p>Real-time monitoring of file system activities to detect suspicious access patterns and data exfiltration attempts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Development Timeline -->
+        <div class="section">
+            <h2>Development Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Research Phase</h3>
+                        <p><strong>Months 1-3:</strong> Comprehensive analysis of existing cybersecurity solutions and identification of gaps in current threat detection methodologies.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Algorithm Development</h3>
+                        <p><strong>Months 4-6:</strong> Development and training of machine learning models for network anomaly detection and behavioral analysis.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>System Integration</h3>
+                        <p><strong>Months 7-9:</strong> Integration of detection modules, development of real-time processing pipeline, and user interface design.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Testing & Validation</h3>
+                        <p><strong>Months 10-12:</strong> Extensive testing with real-world datasets, performance optimization, and security validation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Deployment Ready</h3>
+                        <p><strong>Present:</strong> System is fully operational with continuous improvement and model retraining capabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="section">
+            <h2>Our Team</h2>
+            <p>Our system is developed by a dedicated team of cybersecurity experts, data scientists, and software engineers with decades of combined experience in threat intelligence and machine learning.</p>
+
+            <div class="team-container">
+                <div class="team-member">
+                    <i class="fas fa-user-tie" style="font-size: 4em; color: #007BFF;"></i>
+                    <h3>Dr. Sarah Chen</h3>
+                    <div class="role">Chief Security Architect</div>
+                    <p>PhD in Cybersecurity with 15+ years experience in threat intelligence and digital forensics.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-user-tie" style="font-size: 4em; color: #007BFF;"></i>
+                    <h3>Michael Rodriguez</h3>
+                    <div class="role">Lead Data Scientist</div>
+                    <p>Specialized in machine learning for cybersecurity with expertise in anomaly detection algorithms.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-user-tie" style="font-size: 4em; color: #007BFF;"></i>
+                    <h3>Emily Watson</h3>
+                    <div class="role">Senior Software Engineer</div>
+                    <p>Full-stack developer with focus on real-time data processing and scalable system architecture.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research & Innovation -->
+        <div class="section">
+            <h2>Research & Innovation</h2>
+            <p>Our system incorporates several innovative approaches that set it apart from traditional cybersecurity solutions:</p>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <h3>Multi-Layer Detection</h3>
+                    <p>5+</p>
+                    <span>Detection layers for comprehensive threat coverage</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Model Accuracy</h3>
+                    <p>95%+</p>
+                    <span>Detection accuracy across multiple threat categories</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Real-time Processing</h3>
+                    <p>&lt;100ms</p>
+                    <span>Average detection latency for immediate threat response</span>
+                </div>
+            </div>
+
+            <h3>Key Innovations</h3>
+            <ul>
+                <li><strong>Adaptive Learning:</strong> Our models continuously learn from new data and adapt to evolving threat landscapes</li>
+                <li><strong>Explainable AI:</strong> Transparent decision-making processes with detailed forensic context for each alert</li>
+                <li><strong>Privacy-Preserving Analysis:</strong> Advanced techniques that enable threat detection without compromising user privacy</li>
+                <li><strong>Cross-Domain Correlation:</strong> Integration of network, endpoint, and behavioral data for holistic threat assessment</li>
+            </ul>
+        </div>
+
+        <!-- Compliance & Standards -->
+        <div class="section">
+            <h2>Compliance & Standards</h2>
+            <p>Our system is designed to help organizations meet various compliance requirements and security standards:</p>
+
+            <div class="grid-container">
+                <div class="tile purple">
+                    <div class="tile-content">
+                        <i class="fas fa-shield-alt"></i>
+                        <h2>NIST Framework</h2>
+                        <p>Aligned with NIST Cybersecurity Framework for comprehensive risk management</p>
+                    </div>
+                </div>
+                <div class="tile blue">
+                    <div class="tile-content">
+                        <i class="fas fa-lock"></i>
+                        <h2>GDPR Compliant</h2>
+                        <p>Designed with privacy-by-design principles and GDPR compliance in mind</p>
+                    </div>
+                </div>
+                <div class="tile green">
+                    <div class="tile-content">
+                        <i class="fas fa-industry"></i>
+                        <h2>Industry Standards</h2>
+                        <p>Compatible with common industry security standards and best practices</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section">
+            <h2>Contact Us</h2>
+            <p>For more information about our system, partnership opportunities, or technical inquiries, please reach out to our team:</p>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>info@cybersecurity-ml.com</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+1 (555) 123-4567</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Cybersecurity Innovation Center<br>San Francisco, CA</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Support Hours</h3>
+                    <p>24/7 Emergency Support<br>Business Hours: 9 AM - 6 PM PST</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="section" style="text-align: center; background: linear-gradient(135deg, #007BFF, #6f42c1); color: white;">
+            <h2>Ready to Enhance Your Security Posture?</h2>
+            <p style="font-size: 1.2em;">
+                Join organizations worldwide that trust our ML-driven forensic detection system to protect their digital assets.
+            </p>
+            <p style="font-size: 1.1em; margin-top: 20px;">
+                <strong>Get Started Today - Schedule Your Demo</strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    &copy; 2025 ML-Driven Forensic Malicious Behavior Detection System | Designed for Organizational and Personal Threat Detection | <a href="#">All Rights Reserved</a>
+</div>
+
+<script>
+    // Simple animation for timeline items
+    document.addEventListener('DOMContentLoaded', function() {
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        timelineItems.forEach(item => {
+            item.style.opacity = '0';
+            if (item.classList.contains('timeline-item:nth-child(odd)')) {
+                item.style.transform = 'translateX(-50px)';
+            } else {
+                item.style.transform = 'translateX(50px)';
+            }
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - ML-Driven Forensic Malicious Behavior Detection System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Top Navigation Bar - Centered */
+        .topnav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #111;
+            overflow: hidden;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .topnav a {
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background-color 0.3s;
+        }
+
+        .topnav a:hover {
+            background-color: #333;
+            color: white;
+        }
+
+        .topnav a.active {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .nav-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: 20px;
+        }
+
+        .username {
+            color: #f2f2f2;
+            font-size: 14px;
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            border-radius: 4px;
+            padding: 8px 16px;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        .auth-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 60px;
+        }
+
+        .auth-header {
+            background: linear-gradient(135deg, #007BFF, #6f42c1);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .auth-header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .auth-body {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9em;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .input-with-icon input {
+            width: 100%;
+            padding: 12px 15px 12px 45px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .input-with-icon input:focus {
+            outline: none;
+            border-color: #007BFF;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .remember-me input {
+            margin: 0;
+        }
+
+        .forgot-password {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #007BFF, #6f42c1);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .btn-google {
+            background: white;
+            color: #333;
+            border: 2px solid #e1e5e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn-google:hover {
+            border-color: #007BFF;
+            transform: translateY(-2px);
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e5e9;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .auth-footer a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .security-features {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+
+        .security-features h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .security-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .security-features li {
+            padding: 5px 0;
+            font-size: 0.85em;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .security-features li i {
+            color: #28a745;
+            font-size: 0.8em;
+        }
+
+        .alert {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @media (max-width: 480px) {
+            .auth-container {
+                margin: 20px;
+                margin-top: 80px;
+            }
+
+            .auth-body {
+                padding: 20px;
+            }
+
+            .remember-forgot {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .topnav {
+                flex-direction: column;
+            }
+
+            .nav-user {
+                margin-left: 0;
+                margin-top: 10px;
+                justify-content: center;
+            }
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .system-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            margin-top: 5px;
+        }
+
+        /* Flash messages styling */
+        .flash-messages {
+            margin-bottom: 20px;
+        }
+
+        .flash-success {
+            background: #d4edda;
+            color: #155724;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            margin-bottom: 10px;
+        }
+
+        .flash-error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Navigation Bar -->
+<div class="topnav">
+    <!-- Always show Home and About -->
+    <a href="{{ url_for('home') }}"><i class="fas fa-brain"></i> Dashboard</a>
+    <a href="{{ url_for('about') }}"><i class="fas fa-info-circle"></i> About</a>
+
+    {% if session.user_id %}
+        <!-- Show protected routes only when logged in -->
+        <a href="{{ url_for('network') }}"><i class="fas fa-network-wired"></i> Network Traffic Analysis</a>
+        <a href="{{ url_for('file') }}"><i class="fas fa-file"></i> File Access Patterns</a>
+        <a href="{{ url_for('restricted') }}"><i class="fas fa-ban"></i> Restricted Site Access</a>
+        <a href="{{ url_for('api_analyzer') }}"><i class="fas fa-plug"></i> API Behavior Analysis</a>
+        <div class="nav-user">
+            <span class="username">Welcome, {{ username }}</span>
+            <a href="{{ url_for('signin') }}" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+    {% else %}
+        <!-- Show auth links when not logged in -->
+        <a class="active" href="{{ url_for('signin') }}"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+        <a href="{{ url_for('signup') }}"><i class="fas fa-user-plus"></i> Sign Up</a>
+    {% endif %}
+</div>
+
+<!-- Sign In Container -->
+<div class="auth-container">
+    <div class="auth-header">
+        <h1>Welcome Back</h1>
+        <p>Sign in to your security dashboard</p>
+        <div class="system-badge">ML-Driven Forensic Detection System</div>
+    </div>
+
+    <div class="auth-body">
+        <!-- Flash Messages -->
+        <div class="flash-messages">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash-{{ category }}">
+                            <i class="fas fa-{% if category == 'success' %}check-circle{% else %}exclamation-triangle{% endif %}"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <!-- Success Alert (for JavaScript) -->
+        <div class="alert alert-success" id="successAlert">
+            <i class="fas fa-check-circle"></i> Successfully signed out. Please sign in again.
+        </div>
+
+        <!-- Error Alert (for JavaScript) -->
+        <div class="alert alert-error" id="errorAlert">
+            <i class="fas fa-exclamation-triangle"></i> Invalid credentials. Please try again.
+        </div>
+
+        <form method="POST" id="signinForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <a href="#" class="forgot-password">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-sign-in-alt"></i> Sign In
+            </button>
+
+            <button type="button" class="btn btn-google">
+                <i class="fab fa-google"></i> Sign in with Google
+            </button>
+        </form>
+
+        <div class="auth-footer">
+            Don't have an account? <a href="{{ url_for('signup') }}">Create one here</a>
+        </div>
+
+        <div class="security-features">
+            <h4><i class="fas fa-shield-alt"></i> Secure Sign In</h4>
+            <ul>
+                <li><i class="fas fa-check"></i> Multi-factor authentication ready</li>
+                <li><i class="fas fa-check"></i> Encrypted connection (TLS 1.3)</li>
+                <li><i class="fas fa-check"></i> Suspicious activity monitoring</li>
+                <li><i class="fas fa-check"></i> Session timeout protection</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Password visibility toggle
+    function togglePassword(fieldId) {
+        const passwordField = document.getElementById(fieldId);
+        const toggleIcon = passwordField.nextElementSibling.querySelector('i');
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            toggleIcon.className = 'fas fa-eye-slash';
+        } else {
+            passwordField.type = 'password';
+            toggleIcon.className = 'fas fa-eye';
+        }
+    }
+
+    // Form submission handling
+    document.getElementById('signinForm').addEventListener('submit', function(e) {
+        // Form will be submitted to the server for actual authentication
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+        submitBtn.disabled = true;
+
+        // The form will naturally submit to the server for Flask authentication
+    });
+
+    // Check URL parameters for messages and hide JavaScript alerts initially
+    window.addEventListener('load', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Hide JavaScript alerts by default (Flask flash messages will handle alerts)
+        document.getElementById('successAlert').style.display = 'none';
+        document.getElementById('errorAlert').style.display = 'none';
+
+        // If there are flash messages, let them handle the display
+        const flashMessages = document.querySelector('.flash-messages');
+        if (flashMessages.children.length > 0) {
+            // Flash messages are present, let them handle user feedback
+        }
+    });
+
+    // Google Sign In handler
+    document.querySelector('.btn-google').addEventListener('click', function() {
+        // Simulate Google sign in
+        const btn = this;
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connecting...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            alert('Google Sign In would be implemented here with OAuth2');
+        }, 1500);
+    });
+
+    // Forgot password handler
+    document.querySelector('.forgot-password').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('Password reset functionality would be implemented here. Please contact system administrator.');
+    });
+
+    // Auto-focus on username field
+    document.addEventListener('DOMContentLoaded', function() {
+        const usernameField = document.getElementById('username');
+        if (usernameField) {
+            usernameField.focus();
+        }
+    });
+</script>
+</body>
+</html>

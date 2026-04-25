@@ -1,0 +1,76 @@
+inter_api_access_duration(sec),api_access_uniqueness,sequence_length(count),vsession_duration(min),num_sessions,num_users,num_unique_apis,ip_type,behavior,behavior_type,source
+60.673725,0.5,40,145617,1,1,20,default,SQL Injection,attack,E
+1.665505263,0.326315789,95,9494,1,1,31,default,outlier,outlier,unknown_source_category
+0.006833333,0.333333333,3,3,3,2,2,default,Sogou web spider/4.0;unknown,bot,F
+6.786092767,0.075471698,106,129479,4,3,24,default,Remote Code Execution,attack,E
+1.259401786,0.142857143,56,16927,5,4,32,default,Normal,normal,unknown_source_category
+49.17173913,0.173913043,23,67857,1,1,4,default,outlier,outlier,unknown_source_category
+0.189214286,0.5,3.5,159,5,4,7,default,Normal,normal,unknown_source_category
+0.007,0.333333333,2,3,3,3,2,default,Sogou web spider/4.0;unknown,bot,F
+147.9871429,0.571428571,7,62155,1,1,4,default,outlier,outlier,unknown_source_category
+8.834041667,0.666666667,12,6361,2,1,8,default,outlier,outlier,unknown_source_category
+1.48075,0.583333333,6,1067,2,2,7,default,Normal,normal,unknown_source_category
+0.288924731,0.150537634,9.3,1613,13,10,14,default,Normal,normal,unknown_source_category
+15.21892857,0.357142857,7,12784,3,2,5,default,Normal,normal,unknown_source_category
+0.019125,0.25,2,5,4,2,1,default,FacebookExternalHit/1.1,bot,F
+25.46547059,0.169117647,136,207799,1,1,23,default,Remote Code Execution,attack,E
+3.31e-05,0.03525641,104,2,936,9,33,default,bingbot/2.0,bot,F
+12.65917588,0.115577889,199,151151,1,1,23,default,Remote Code Execution,attack,E
+0.014661972,0.204225352,14.2,125,15,10,29,default,Normal,normal,unknown_source_category
+1.234635802,0.333333333,81,6001,4,1,27,default,outlier,outlier,unknown_source_category
+6.752727273,0.818181818,11,4457,1,1,9,default,outlier,outlier,unknown_source_category
+1.068958333,0.416666667,4,770,4,3,5,default,Normal,normal,unknown_source_category
+0.000249057,0.018867925,4.274193548,4,64,62,5,default,Normal,normal,unknown_source_category
+0.010875,0.5,2,3,2,2,2,private_ip,Python-requests;unknown,bot,F
+0.112714286,0.357142857,4.666666667,95,3,3,5,default,Normal,normal,unknown_source_category
+0.426986686,0.094674556,24.14285714,8660,22,14,32,default,Normal,normal,unknown_source_category
+1.299270833,0.125,3,1871,8,8,3,default,Normal,normal,unknown_source_category
+43.99724675,0.285714286,77,203268,1,1,22,default,Remote Code Execution,attack,E
+0.316181818,1,22,418,1,1,22,default,outlier,outlier,unknown_source_category
+0.254041667,0.103174603,22.90909091,3842,12,11,26,default,Normal,normal,unknown_source_category
+34.76672727,0.363636364,5.5,22947,2,2,4,default,Normal,normal,unknown_source_category
+10.83476471,0.529411765,8.5,11052,2,2,9,default,Normal,normal,unknown_source_category
+3.028244444,0.266666667,11.25,8177,6,4,12,default,Normal,normal,unknown_source_category
+225.1011,0.1,30,405182,1,1,3,default,BingPreview/1.0b;bingbot/2.0;unknown,bot,F
+0.006,0.5,2,1,2,1,1,default,outlier,outlier,unknown_source_category
+0.833184739,0.13253012,22.63636364,12448,14,11,33,default,Normal,normal,unknown_source_category
+2.188298507,0.154228856,402,52782,2,1,62,default,outlier,outlier,unknown_source_category
+168.3763333,1,3,30308,1,1,3,private_ip,Yahoo! Slurp;unknown,bot,F
+0.004131652,0.011688711,47.80882353,806,65,68,38,default,Normal,normal,unknown_source_category
+21.6694625,0.13125,160,208027,1,1,21,default,Remote Code Execution,attack,E
+0.08,1,1,5,1,1,1,default,FacebookExternalHit/1.1,bot,F
+0.382113636,0.166666667,22,1514,8,3,11,default,Normal,normal,unknown_source_category
+15.2806338,0.154929577,142,130191,1,1,22,default,Remote Code Execution,attack,E
+12.444,0.571428571,7,5227,1,1,4,default,outlier,outlier,unknown_source_category
+9.783461538,0.846153846,13,7632,1,1,11,default,Remote Code Execution,attack,E
+1.135579516,0.019014693,385.6666667,78832,6,3,22,default,Normal,normal,unknown_source_category
+2.872458333,0.458333333,24,4137,1,1,11,default,outlier,outlier,unknown_source_category
+1.280325,0.254545455,220,16901,1,1,56,default,outlier,outlier,unknown_source_category
+0.453185185,0.259259259,10.8,1469,6,5,14,default,Normal,normal,unknown_source_category
+1.868090909,0.727272727,11,1233,1,1,8,default,outlier,outlier,unknown_source_category
+3.72e-05,0.033498759,89.55555556,2,806,9,27,default,bingbot/2.0,bot,F
+0.980173077,0.384615385,8.666666667,1530,4,3,10,default,Normal,normal,unknown_source_category
+0.672017544,0.210526316,28.5,2299,4,2,12,default,Normal,normal,unknown_source_category
+0.025857143,0.285714286,2.333333333,11,3,3,2,default,Normal,normal,unknown_source_category
+0.0498,0.2,3.75,45,7,4,3,default,Normal,normal,unknown_source_category
+36.81769565,0.217391304,6.571428571,101617,19,7,10,default,BingPreview/1.0b;bingbot/2.0,bot,F
+1.087098958,0.25,48,6262,4,2,24,default,Normal,normal,unknown_source_category
+0.974389432,0.097847358,511,29875,2,1,50,default,outlier,outlier,unknown_source_category
+38.52366667,1,3,6935,1,1,3,default,outlier,outlier,unknown_source_category
+0.0115,0.5,2,3,2,2,2,default,Googlebot/2.1;unknown,bot,F
+0.049312623,0.026627219,40.56,3001,71,25,27,default,Normal,normal,unknown_source_category
+89.12575,0.5,10,53476,2,1,5,default,outlier,outlier,unknown_source_category
+27.91883333,0.666666667,3,5026,2,1,2,default,outlier,outlier,unknown_source_category
+9.352375,1,4,2245,2,1,4,default,outlier,outlier,unknown_source_category
+2.091607143,0.5,14,3514,4,2,14,default,Normal,normal,unknown_source_category
+0.153928571,0.428571429,7,130,2,2,6,default,Normal,normal,unknown_source_category
+16.807335,0.115,200,201689,1,1,23,default,Remote Code Execution,attack,E
+0.6943,0.288888889,4.5,1875,12,10,13,default,Normal,normal,unknown_source_category
+3.12e-05,0.027290448,114,2,1026,9,28,default,bingbot/2.0,bot,F
+109.0625862,0.689655172,29,189769,1,1,20,default,Remote Code Execution,attack,E
+110.7428462,0.048951049,143,950174,1,1,7,default,BingPreview/1.0b;bingbot/2.0;unknown,bot,F
+127.1446,0.4,5,38144,1,1,2,default,BingPreview/1.0b;bingbot/2.0;unknown,bot,F
+1.532375,0.5,8,736,1,1,4,default,outlier,outlier,unknown_source_category
+20.79421429,0.785714286,14,17468,1,1,11,default,outlier,outlier,unknown_source_category
+109.5805,0.5,2,13150,1,1,1,default,AdsBot-Google;Chrome,bot,F
+10.93618182,0.454545455,3.666666667,7218,3,3,5,default,Normal,normal,unknown_source_category
